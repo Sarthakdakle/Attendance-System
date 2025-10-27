@@ -1,33 +1,66 @@
 package com.example.attendancesystem;
 
-import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.card.MaterialCardView;
-import com.example.attendancesystem.R;
+
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.example.attendancesystem.databinding.ActivityStudentDashboardBinding;
 
 public class StudentDashboardActivity extends AppCompatActivity {
-    MaterialCardView cardToday, cardHistory, cardProfile;
+
+    FrameLayout frameLayout;
+    BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
 
-        cardToday = findViewById(R.id.cardToday);
-        cardHistory = findViewById(R.id.cardHistory);
-        cardProfile = findViewById(R.id.cardProfile);
+        frameLayout = findViewById(R.id.frame_layout);
+        bottomNavigationView = findViewById(R.id.stu_bottom_navigation);
 
-        cardToday.setOnClickListener(v -> {
-            // Show today’s attendance (dummy for now)
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int itemId = menuItem.getItemId();
+                if (itemId == R.id.attendanceS){
+                    loadFrame(new StudentAttendanceFragment(), false);
+                } else if (itemId == R.id.history) {
+                    loadFrame(new StudentHistoryFragment(), false);
+                } else if (itemId == R.id.location) {
+                    loadFrame(new StudentLocationFragment(),false);
+                }
+                return true;
+            }
         });
+        loadFrame(new StudentAttendanceFragment(), true);
+    }
 
-        cardHistory.setOnClickListener(v ->
-                startActivity(new Intent(this, AttendanceHistory.class))
-        );
-
-        cardProfile.setOnClickListener(v -> {
-
-        });
+    private void loadFrame(Fragment fragment, boolean isAppInitialized){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if (isAppInitialized){
+            fragmentTransaction.add(R.id.frame_layout,fragment);
+        } else {
+            fragmentTransaction.replace(R.id.frame_layout,fragment);
+        }
+        fragmentTransaction.commit();
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/attendanceT"
+        android:title="Attendance"
+        android:icon="@drawable/check"/>
+
+    <item
+        android:id="@+id/location_validation"
+        android:title="Location Validation"
+        android:icon="@drawable/location"/>
+
+    <item
+        android:id="@+id/summary"
+        android:title="Attendance Summary"
+        android:icon="@drawable/summary"/>
+</menu>
