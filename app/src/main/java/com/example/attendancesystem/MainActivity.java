@@ -23,7 +23,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     Button login_btn, register_btn, teacher_lg, student_lg;
-    EditText etEmail, etPassword;
+    EditText etEmail, etPassword, etUsername;
     TextView forgot_password;
     boolean isTeacher = true;
 
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         forgot_password = findViewById(R.id.forgot_password);
+        etUsername = findViewById(R.id.et_username);
 
         // Switch Between Teacher / Student
         teacher_lg.setOnClickListener(v -> switchRole(true));
@@ -90,8 +91,9 @@ public class MainActivity extends AppCompatActivity {
     private void registerUser() {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+        String username = etUsername.getText().toString().trim();
 
-        if (!isValidInput(email, password)) return;
+        if (!isValidInput(email, password, username)) return;
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Map<String, Object> userData = new HashMap<>();
                 userData.put("uid", user.getUid());
+                userData.put("name", username);
                 userData.put("email", email);
                 userData.put("role", role);
 
@@ -119,8 +122,9 @@ public class MainActivity extends AppCompatActivity {
     private void loginUser() {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+        String username = etUsername.getText().toString().trim();
 
-        if (!isValidInput(email, password)) return;
+        if (!isValidInput(email, password, null)) return;
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -136,14 +140,14 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .addOnFailureListener(e ->
-                                Toast.makeText(this, "Failed to fetch user data", Toast.LENGTH_SHORT).show());
+                                Toast.makeText(this, "Login Failed"+ e.getMessage(), Toast.LENGTH_SHORT).show());
             } else {
                 Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private boolean isValidInput(String email, String password) {
+    private boolean isValidInput(String email, String password, String username) {
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
             return false;
@@ -154,6 +158,10 @@ public class MainActivity extends AppCompatActivity {
         }
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (username != null && TextUtils.isEmpty(username)) {
+            Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

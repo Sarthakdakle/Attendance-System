@@ -64,6 +64,13 @@
                     android:textColor="#EB0B0B" />
             </LinearLayout>
 
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Username"
+                android:layout_marginTop="12dp" />
+
 
             <EditText
                 android:id="@+id/et_email"
@@ -73,12 +80,6 @@
                 android:inputType="textEmailAddress"
                 android:layout_marginTop="12dp" />
 
-<!--            <EditText-->
-<!--                android:id="@+id/etRollNo"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="Enter Roll No."-->
-<!--                android:layout_marginTop="12dp" />-->
 
             <EditText
                 android:id="@+id/et_password"

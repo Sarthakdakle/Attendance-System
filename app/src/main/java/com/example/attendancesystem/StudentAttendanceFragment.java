@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class StudentAttendanceFragment extends Fragment {
 
-    private ImageView logout_btn;
+    private ImageView btn_profile;
 
     @Nullable
     @Override
@@ -26,15 +26,24 @@ public class StudentAttendanceFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_student_attendance, container, false);
 
-        logout_btn = view.findViewById(R.id.logout_btn);
+//        logout_btn = view.findViewById(R.id.logout_btn);
+        btn_profile = view.findViewById(R.id.btn_profile);
 
-        logout_btn.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            requireActivity().finish();
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Student_Profile.class);
+                startActivity(intent);
+            }
         });
+
+//        logout_btn.setOnClickListener(v -> {
+//            FirebaseAuth.getInstance().signOut();
+//            Intent intent = new Intent(getActivity(), MainActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
+//            requireActivity().finish();
+//        });
 
         return view;
     }

@@ -9,22 +9,25 @@
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:weightSum="0.9">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Student Attendance Page"
-            android:textSize="20dp"/>
+            android:layout_weight="0.9"
+            android:text="Give Attendance"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <ImageView
-            android:id="@+id/logout_btn"
+            android:id="@+id/btn_profile"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_logout"
-            android:layout_gravity="end"
-            android:layout_marginLeft="80dp"/>
-
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_student_profile" />
     </LinearLayout>
 
 </LinearLayout>

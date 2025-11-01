@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AttendanceSystem">
         <activity
+            android:name=".Teacher_Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Student_Profile"
+            android:exported="false" />
+        <activity
             android:name=".StudentDashboardActivity"
             android:exported="false"
             android:theme="@style/Theme.AttendanceSystem" />
