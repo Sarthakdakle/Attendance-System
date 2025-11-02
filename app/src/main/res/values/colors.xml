@@ -7,4 +7,5 @@
     <color name="skyBlue">#87CEEB</color>
     <color name="red">#FF0000</color>
     <color name="lightRed">#FF7F7F</color>
+    <color name="gray">#808080</color>
 </resources>

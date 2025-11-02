@@ -49,17 +49,13 @@ public class MainActivity extends AppCompatActivity {
         forgot_password = findViewById(R.id.forgot_password);
         etUsername = findViewById(R.id.et_username);
 
-        // Switch Between Teacher / Student
         teacher_lg.setOnClickListener(v -> switchRole(true));
         student_lg.setOnClickListener(v -> switchRole(false));
 
-        // Login
         login_btn.setOnClickListener(v -> loginUser());
 
-        // Register
         register_btn.setOnClickListener(v -> registerUser());
 
-        // Forgot Password
 //        forgot_password.setOnClickListener(v -> {
 //            String email = etEmail.getText().toString().trim();
 //            if (TextUtils.isEmpty(email)) {

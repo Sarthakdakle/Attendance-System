@@ -4,30 +4,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentAttendanceFragment"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:weightSum="0.9">
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:background="@drawable/header_bg">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.9"
-            android:text="Give Attendance"
+            android:layout_weight="1"
+            android:text="Today's Attendance"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center" />
 
         <ImageView
             android:id="@+id/btn_profile"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_student_profile" />
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_student_profile"
+            android:layout_gravity="center"
+            android:contentDescription="Profile"
+            android:padding="4dp"
+            android:background="@drawable/rounded_icon_bg" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: 01 Nov 2025"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status: Not Marked"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:textColor="@color/gray"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btn_mark_attendance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mark My Attendance"
+        android:backgroundTint="@color/red"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/tv_confirmation_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        android:layout_marginTop="25dp"/>
 
 </LinearLayout>

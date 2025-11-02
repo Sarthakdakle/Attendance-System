@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,27 +8,64 @@
     android:padding="15dp">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".TakeAttendance"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+    <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:weightSum="0.9">
+        android:padding="10dp"
+        android:background="@drawable/header_bg">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.9"
+            android:layout_weight="1"
             android:text="Take Attendance"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center" />
 
         <ImageView
             android:id="@+id/btn_profile"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_teacher_profile"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_teacher_profile"
+            android:layout_gravity="center"
+            android:contentDescription="Profile"
+            android:padding="4dp"
+            android:background="@drawable/rounded_icon_bg" />
     </LinearLayout>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: 01 Nov 2025"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_student_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btn_save_attendance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Attendance"
+            android:backgroundTint="@color/red"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+</ScrollView>
